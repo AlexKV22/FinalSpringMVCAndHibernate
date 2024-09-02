@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <tr th:each="user : ${allUsers}">
+        <h1 th:text="${user.toString()}"></h1>
+    </tr>
+</div>
+
+<div>
+<form action = "/addUser" method="post">
+    <label for ="addFieldName"> Write the username </label>
+    <input type = "text" id = "addFieldName" name ="addFieldName" required>
+    <label for = "addFieldAge"> Write the user age </label>
+    <input type = "number" id = "addFieldAge" name = "addFieldAge" required>
+    <button type = "submit"> Add user </button>
+</form>
+</div>
+
+<div>
+<form action = "/findUser" method="get">
+    <label for ="addIdName"> Write the id </label>
+    <input type = "number" id = "addIdName" name = "addIdName" required>
+    <button type = "submit"> Find user </button>
+</form>
+</div>
+
+<div>
+    <form action = "/deleteUser" method="post">
+        <label for ="deleteUser"> Choose user for delete </label>
+        <select id = "deleteUser" name = "deleteUser">
+            <option value = ""> Select user</option>
+            <th:block th:each = "user : ${allUsers}">
+                <option th:value="${user.getId()}" th:text="${user.getName()}"></option>
+            </th:block>
+        </select>
+        <button type = "submit"> Delete user </button>
+    </form>
+</div>
+
+</body>
+</html>
