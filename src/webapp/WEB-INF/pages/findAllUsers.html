@@ -43,5 +43,23 @@
     </form>
 </div>
 
+
+<div>
+    <form action = "/updateUser" method="post">
+        <label for ="updateUser"> Choose user for update </label>
+        <select id = "updateUser" name = "updateUser">
+            <option value = ""> Select user</option>
+            <th:block th:each = "user : ${allUsers}">
+                <option th:value="${user.getId()}" th:text="${user.getName()}"></option>
+            </th:block>
+        </select>
+        <label for ="addNewName"> Write the username </label>
+        <input type = "text" id = "addNewName" name ="addNewName" required>
+        <label for = "addNewAge"> Write the user age </label>
+        <input type = "number" id = "addNewAge" name = "addNewAge" required>
+        <button type = "submit"> Update user </button>
+    </form>
+</div>
+
 </body>
 </html>

@@ -44,4 +44,13 @@ public class UserController {
         model.addAttribute("userById", userById);
         return "findUserById";
     }
+
+    @PostMapping(value = "/updateUser")
+    public String updateUser(@RequestParam("updateUser") Integer id, @RequestParam("addNewName") String name, @RequestParam("addNewAge") Integer age, ModelMap model) {
+        User userById = userService.getUserById(id);
+        userById.setName(name);
+        userById.setAge(age);
+        userService.updateUser(userById);
+        return "redirect:/";
+    }
 }
