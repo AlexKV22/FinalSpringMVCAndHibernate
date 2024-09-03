@@ -3,33 +3,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>This is all of users</title>
 </head>
 <body>
+
 <div>
     <tr th:each="user : ${allUsers}">
-        <h1 th:text="${user.toString()}"></h1>
+        <h3 th:text="${user.toString()}"></h3>
     </tr>
 </div>
 
-<div>
-<form action = "/addUser" method="post">
-    <label for ="addFieldName"> Write the username </label>
-    <input type = "text" id = "addFieldName" name ="addFieldName" required>
-    <label for = "addFieldAge"> Write the user age </label>
-    <input type = "number" id = "addFieldAge" name = "addFieldAge" required>
-    <button type = "submit"> Add user </button>
-</form>
-</div>
+
 
 <div>
-<form action = "/findUser" method="get">
-    <label for ="addIdName"> Write the id </label>
-    <input type = "number" id = "addIdName" name = "addIdName" required>
-    <button type = "submit"> Find user </button>
-</form>
+    <form action = "/actionUserForm" method="get">
+        <button type = "submit"> Add user </button>
+    </form>
 </div>
 
+
+
+<br>
 <div>
     <form action = "/deleteUser" method="post">
         <label for ="deleteUser"> Choose user for delete </label>
@@ -44,22 +38,25 @@
 </div>
 
 
+
+
+<br>
 <div>
-    <form action = "/updateUser" method="post">
-        <label for ="updateUser"> Choose user for update </label>
-        <select id = "updateUser" name = "updateUser">
-            <option value = ""> Select user</option>
-            <th:block th:each = "user : ${allUsers}">
-                <option th:value="${user.getId()}" th:text="${user.getName()}"></option>
-            </th:block>
-        </select>
-        <label for ="addNewName"> Write the username </label>
-        <input type = "text" id = "addNewName" name ="addNewName" required>
-        <label for = "addNewAge"> Write the user age </label>
-        <input type = "number" id = "addNewAge" name = "addNewAge" required>
-        <button type = "submit"> Update user </button>
-    </form>
+<form action = "/findUser" method="get">
+    <label for ="findID"> Write the id </label>
+    <input type = "number" id = "findID" name = "findID" required>
+    <button type = "submit"> Find user </button>
+</form>
 </div>
 
+
+
+
+<br>
+<div>
+    <form action = "/actionUpdateForm" method="get">
+        <button type = "submit">  Update user </button>
+    </form>
+</div>
 </body>
 </html>

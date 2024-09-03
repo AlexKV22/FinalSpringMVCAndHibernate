@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Transactional
@@ -22,8 +25,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void updateUser(User user) {
-        userRepository.update(user);
+    public void updateUser(Integer id, User user) {
+        User byId = userRepository.findById(id);
+        byId.setName(user.getName());
+        byId.setAge(user.getAge());
+        userRepository.updateUser(byId);
     }
 
     @Override

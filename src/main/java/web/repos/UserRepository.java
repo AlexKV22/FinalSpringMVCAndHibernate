@@ -24,7 +24,7 @@ public class UserRepository implements UserRepositoryInterface {
     }
 
     @Override
-    public void update(User user) {
+    public void updateUser(User user) {
         em.merge(user);
     }
 
