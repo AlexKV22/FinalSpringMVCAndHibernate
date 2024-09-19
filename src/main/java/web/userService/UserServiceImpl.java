@@ -5,15 +5,15 @@ import web.model.User;
 import web.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import web.repos.UserRepositoryInterface;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private UserRepositoryInterface userRepository;
 
-    private UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepositoryInterface userRepository) {
         this.userRepository = userRepository;
     }
 

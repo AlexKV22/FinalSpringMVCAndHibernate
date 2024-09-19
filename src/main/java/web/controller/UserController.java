@@ -1,6 +1,4 @@
 package web.controller;
-
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import web.model.User;
@@ -15,6 +13,7 @@ import java.util.List;
 
 @Controller
 public class UserController {
+
     private UserService userService;
 
     public UserController(UserService userService) {
@@ -65,4 +64,6 @@ public class UserController {
         userService.updateUser(id,user);
         return "redirect:/";
     }
+
+
 }
