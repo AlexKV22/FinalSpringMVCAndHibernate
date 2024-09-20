@@ -20,16 +20,17 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void addUser(User user) {
-        userRepository.create(user);
+        userRepository.save(user);
     }
 
     @Override
-    @Transactional
     public void updateUser(Integer id, User user) {
-        User byId = userRepository.findById(id);
-        byId.setName(user.getName());
-        byId.setAge(user.getAge());
-        userRepository.updateUser(byId);
+//        User byId = userRepository.findById(Long.valueOf(id)).orElse(null);
+//        if (byId != null) {
+//            byId.setName(user.getName());
+//            byId.setAge(user.getAge());
+//        }
+        userRepository.updateUserById(user.getName(), user.getAge(), id);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Integer id) {
-        return userRepository.findById(id);
+        return userRepository.findById(Long.valueOf(id)).orElse(null);
     }
 
     @Override

@@ -24,12 +24,12 @@ public class UserController {
     public String findAllUsers(ModelMap model) {
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
-        return "findAllUsers";
+        return "find-all-users";
     }
 
     @GetMapping(value = "/actionUserForm")
     public String addUserRedirect(ModelMap model) {
-        return "addUsers";
+        return "add-user";
     }
 
     @PostMapping(value ="/addUser")
@@ -49,14 +49,14 @@ public class UserController {
     public String findUserById(@RequestParam("findID") Integer id, ModelMap model) {
         User userById = userService.getUserById(id);
         model.addAttribute("userById", userById);
-        return "findUserById";
+        return "find-user-by-id";
     }
 
     @GetMapping(value = "/actionUpdateForm")
     public String updateUserRedirect(ModelMap model) {
         List<User> allUsers1 = userService.getAllUsers();
         model.addAttribute("allUsers1", allUsers1);
-        return "updateUser";
+        return "update-user";
     }
 
     @PostMapping(value = "/updateUser")
